@@ -1,9 +1,10 @@
-import './Home.css'
+import './App.css';
 
 function Home() {
   return (
     //page intermédiaire vers la page d'utilisateur
-    <div>Home</div>
+    <>
+    </>
   )
 }
 
