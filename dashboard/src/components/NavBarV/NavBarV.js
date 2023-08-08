@@ -1,20 +1,24 @@
-import {SportIcon} from "../../components/index";
+import { SportIcon } from "../../components/index";
+import meditation from "../../assets/images/icons_navbar/meditation.png";
+import swimming from "../../assets/images/icons_navbar/swimming.png";
+import cycling from "../../assets/images/icons_navbar/cycling.png";
+import bodybuilding from "../../assets/images/icons_navbar/bodybuilding.png";
 
-// import { meditation } from "../../constantes";
+const NavBarV = () => {
+  const arrayIcons = [meditation, swimming, cycling, bodybuilding];
 
-const NavBarV = () =>  {
   return (
     <>
-    <div className="navBarV">
+      <div className="navBarV">
         <div className="icons">
-            <SportIcon />
+          {arrayIcons.map((icon, index) => {
+            return <SportIcon icon={icon} key={index} />;
+          })}
         </div>
-        
-
         <span className="copyright"> Copiryght, SportSee 2020</span>
-    </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default NavBarV
+export default NavBarV;
