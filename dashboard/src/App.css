@@ -44,3 +44,16 @@ body{
     font-size: 1.25rem;
     color: var(--color--light);
 }
+
+/* navBarV */
+.navBarV{
+  background: green;
+  padding: 10px;
+  height: 100%;
+  position: fixed;
+}
+
+.copyright {
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+}

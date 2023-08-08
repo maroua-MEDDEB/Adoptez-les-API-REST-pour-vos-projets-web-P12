@@ -1,0 +1,1 @@
+export const meditation = require('./assets/images/icons_navbar/meditation.png');

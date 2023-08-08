@@ -16,7 +16,6 @@ const NavBarH = () => {
       </div>
     </div>
     </>
-    
   )
 }
 
