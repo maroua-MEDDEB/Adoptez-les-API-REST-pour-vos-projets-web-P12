@@ -11,19 +11,7 @@ const initialState = {
 
 function Home() {
   const [state, setState] = useState(initialState);
-  // console.log(state.data);
-  // userMainData[0].userInfos
-  const getProfil = () => {
-    return state.data?.userMainData.map((element) => {
-      return (
-        <Profil
-          userId={element.userInfos.userId}
-          userInfos={element.userInfos}
-          imageSrc={`../../assets/images/${element.userInfos.firstName}.jpg}`}
-        />
-      );
-    });
-  };
+  const { data, isLoading } = state;
 
   useEffect(() => {
     /**
@@ -47,17 +35,22 @@ function Home() {
     }
     getMockedData();
   }, []);
-  if (state.data === null) {
-    return <p>loading</p>;
-  }
 
-  if (state.data?.userMainData?.userInfos)
-    return (
-      //page intermédiaire vers la page d'utilisateur
-      <>
-        <div className="informations">{getProfil()}</div>
-      </>
-    );
+  return (
+    //page intermédiaire vers la page d'utilisateur
+    <>
+      <div className="informations">
+        {data?.userMainData?.map((element, index) => (
+          <Profil
+            key={index}
+            userId={element.userInfos.userId}
+            userInfos={element.userInfos}
+            imageSrc={`/images/${element.userInfos.firstName}.png`}
+          />
+        ))}
+      </div>
+    </>
+  );
 }
 
 export default Home;
