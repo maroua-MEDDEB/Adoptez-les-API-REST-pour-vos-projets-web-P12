@@ -49,7 +49,7 @@ body {
   background: var(--color--navbar);
   padding: 10px;
   height: 100%;
-  position: fixed;
+  position: absolute;
 }
 
 .copyright {

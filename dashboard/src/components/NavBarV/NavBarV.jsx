@@ -1,4 +1,4 @@
-import { SportIcon } from "../../components/index";
+import { SportIcon } from "../index";
 import meditation from "../../assets/images/icons_navbar/meditation.png";
 import swimming from "../../assets/images/icons_navbar/swimming.png";
 import cycling from "../../assets/images/icons_navbar/cycling.png";

@@ -1,4 +1,35 @@
-.userInformations {
-  background: green;
-  padding: 10px;
+.home {
+  margin: 100px 230px auto 304px;
+}
+
+.home span {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.containerHome {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+*.usercontainerHome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.usercontainerHome img {
+  height: 25rem;
+  width: 25rem;
+}
+
+.usercontainerHome span {
+  color: var(--color--primary);
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+a {
+  text-decoration: none;
 }

@@ -1,4 +1,4 @@
-import { Profil } from "../../components";
+import { Profil, SportResultsTraining } from "..";
 import "./Home.css";
 import React, { useEffect, useState } from "react";
 import { getAllDataMocked } from "../../service/mockedAPI";
@@ -39,15 +39,18 @@ function Home() {
   return (
     //page intermédiaire vers la page d'utilisateur
     <>
-      <div className="informations">
-        {data?.userMainData?.map((element, index) => (
-          <Profil
-            key={index}
-            userId={element.userInfos.userId}
-            userInfos={element.userInfos}
-            imageSrc={`/images/${element.userInfos.firstName}.png`}
-          />
-        ))}
+      <div className="home">
+        <span>Bienvenue!</span>
+        <div className="containerHome">
+          {data?.userMainData?.map((element, index) => (
+            <Profil
+              key={index}
+              userId={element.userInfos.userId}
+              userInfos={element.userInfos}
+              imageSrc={`/images/${element.userInfos.firstName}.png`}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
