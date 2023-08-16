@@ -1,0 +1,30 @@
+import { useState } from "react";
+
+function CardInfos(props) {
+  let initailState = null;
+  const [state, setState] = useState(initailState);
+  console.log([state, setState]);
+  const showResults = () => {
+    return setState("hello");
+  };
+
+  return (
+    <>
+      <div className="card">
+        <img
+          className="icon_types"
+          src={props.icon_types}
+          alt={`image_icon_${props.text_type}`}
+        />
+        <div className="card_text">
+          <div className="measure_type" onClick={showResults}>
+            {state}
+          </div>
+          <div className="text_type">{props.text_type} </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default CardInfos;

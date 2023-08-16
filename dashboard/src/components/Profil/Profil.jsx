@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const Profil = (props) => {
   // transmettre l'id du de l'utilisateur vers la page UsercontainerHome.
-  let userInfos = `/${props.userId}`;
+  let userInfos = `/sportResults/${props.userId}`;
   return (
     <>
-      <Link to="/sportResults">
+      <Link to={userInfos}>
         <div className="usercontainerHome">
           {/* <img src={imageSrc} alt="" /> */}
           <img src={props.imageSrc} alt="" />

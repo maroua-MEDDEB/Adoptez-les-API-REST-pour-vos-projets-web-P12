@@ -13,7 +13,10 @@ const App = () => {
       {/* définir les différens routages */}
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/sportResults" element={<SportResultsTraining />}></Route>
+        <Route
+          path="/sportResults/:id"
+          element={<SportResultsTraining />}
+        ></Route>
       </Routes>
     </>
   );

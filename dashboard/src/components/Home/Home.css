@@ -33,3 +33,45 @@
 a {
   text-decoration: none;
 }
+
+/* container profilUser*/
+.container_profil_user {
+  background: green;
+  margin: 2rem 2rem 2rem 7.25rem;
+}
+
+/* hedaer profil */
+header {
+  border: 2px solid black;
+}
+
+/* infos */
+.section_infos {
+  background: yellow;
+  padding: 1rem;
+  display: flex;
+}
+
+.items_activity_sport {
+  background: blue;
+  width: 70%;
+}
+
+.grid_cards {
+  background: rgb(188, 230, 162);
+  flex: 1 1 0;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.card img {
+  height: 60px;
+  width: 60px;
+}
+.card_text {
+  background: greenyellow;
+  display: block;
+}
