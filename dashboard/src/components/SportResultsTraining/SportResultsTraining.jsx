@@ -7,8 +7,8 @@ import lipidIcon from "../../assets/images/icons_cards/icon-lipid.png";
 import { useState } from "react";
 
 const SportResultsTraining = () => {
-  const { userId } = useParams; // déstrcuturer cet ensemble du poramètre - accéder au parapmètres de l'url courant
-
+  const { userId } = useParams(); // déstrcuturer cet ensemble du poramètre - accéder au parapmètres de l'url courant
+  console.log(userId);
   //les données de CardInfos
   const data_types = [
     { icon_types: calorieIcon, text_type: "Calories" },
@@ -33,7 +33,7 @@ const SportResultsTraining = () => {
       <h1>SportResultsTraining</h1>;
       <div className="container_profil_user">
         <header>
-          <h1>bonjour {value}</h1>
+          <h1>bonjour {userId}</h1>
           <span>Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
         </header>
         <section className="section_infos">

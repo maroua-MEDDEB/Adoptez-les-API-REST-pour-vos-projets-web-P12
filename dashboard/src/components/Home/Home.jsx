@@ -35,7 +35,7 @@ function Home() {
     }
     getMockedData();
   }, []);
-
+  console.log(data?.userMainData);
   return (
     //page intermédiaire vers la page d'utilisateur
     <>
@@ -45,7 +45,7 @@ function Home() {
           {data?.userMainData?.map((element, index) => (
             <Profil
               key={index}
-              userId={element.userInfos.userId}
+              userId={element?.userId}
               userInfos={element.userInfos}
               imageSrc={`/images/${element.userInfos.firstName}.png`}
             />

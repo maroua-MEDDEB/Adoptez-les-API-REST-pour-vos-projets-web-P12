@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function CardInfos(props) {
   let initailState = null;
@@ -7,6 +7,8 @@ function CardInfos(props) {
   const showResults = () => {
     return setState("hello");
   };
+
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -17,9 +19,7 @@ function CardInfos(props) {
           alt={`image_icon_${props.text_type}`}
         />
         <div className="card_text">
-          <div className="measure_type" onClick={showResults}>
-            {state}
-          </div>
+          <div className="measure_type">{state}</div>
           <div className="text_type">{props.text_type} </div>
         </div>
       </div>
