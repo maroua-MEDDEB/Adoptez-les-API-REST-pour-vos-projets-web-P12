@@ -5,10 +5,14 @@ import carbohydrateIcon from "../../assets/images/icons_cards/icon-carbohydrate.
 import proteinIcon from "../../assets/images/icons_cards/icon-protein.png";
 import lipidIcon from "../../assets/images/icons_cards/icon-lipid.png";
 import { useState } from "react";
+import { getDataByUserId } from "../../service/mockedAPI";
 
 const SportResultsTraining = () => {
   const { userId } = useParams(); // déstrcuturer cet ensemble du poramètre - accéder au parapmètres de l'url courant
-  console.log(userId);
+
+  // const userData = getDataByUserId(userId);
+  // console.log(userData);
+
   //les données de CardInfos
   const data_types = [
     { icon_types: calorieIcon, text_type: "Calories" },

@@ -7,3 +7,13 @@ Retrieves all data using a mocked API endpoint.*
 export const getAllDataMocked = () => {
   return axios.get(data).then((response) => response.data);
 };
+/**
+ 
+Returns an array of objects that match the given userId.*
+@param {string} userId - The userId to search for.
+@param {Array} data - The array of objects to search in.
+@return {Array} - An array of objects that match the given userId.
+*/
+export const getDataByUserId = (userId) => {
+  return getAllDataMocked().map((obj) => obj.userId === userId);
+};

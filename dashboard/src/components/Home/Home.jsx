@@ -35,7 +35,7 @@ function Home() {
     }
     getMockedData();
   }, []);
-  console.log(data?.userMainData);
+
   return (
     //page intermédiaire vers la page d'utilisateur
     <>
