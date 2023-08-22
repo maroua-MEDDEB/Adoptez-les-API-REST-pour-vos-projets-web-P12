@@ -1,43 +1,83 @@
 import { useParams } from "react-router-dom";
 import CardInfos from "../CardInfos/CardInfos";
-import calorieIcon from "../../assets/images/icons_cards/icon-calorie.png";
-import carbohydrateIcon from "../../assets/images/icons_cards/icon-carbohydrate.png";
-import proteinIcon from "../../assets/images/icons_cards/icon-protein.png";
-import lipidIcon from "../../assets/images/icons_cards/icon-lipid.png";
-import { useState } from "react";
-import { getDataByUserId } from "../../service/mockedAPI";
+
+import { useState, useEffect } from "react";
+import { getDataByUserId, getAllDataMocked } from "../../service/mockedAPI";
+import { User } from "../../model/User";
+
+const initialState = {
+  isLoading: true,
+  error: null,
+  isDataLoaded: false,
+  data: null,
+};
 
 const SportResultsTraining = () => {
   const { userId } = useParams(); // déstrcuturer cet ensemble du poramètre - accéder au parapmètres de l'url courant
-
+  const [state, setState] = useState(initialState);
+  const { isLoading, isDataLoaded, data: mockedData, error } = state;
+  // console.log(state.data.userMainData[0].userInfos);
   // const userData = getDataByUserId(userId);
   // console.log(userData);
 
-  //les données de CardInfos
-  const data_types = [
-    { icon_types: calorieIcon, text_type: "Calories" },
-    { icon_types: proteinIcon, text_type: "Proteines" },
-    { icon_types: carbohydrateIcon, text_type: "Glucides" },
-    { icon_types: lipidIcon, text_type: "Lipides" },
-  ];
+  const user = new User(userId, mockedData, false);
+  const firstName = user?._firstName || "unknown user";
 
-  const showTypes = data_types.map((el, index) => {
+  const { nutriments, values } = new User(
+    userId,
+    mockedData?.userMainData,
+    false
+  )._keyData;
+  console.log(nutriments);
+  //les données de CardInfos
+  // const data_types = [
+  //   { icon_types: calorieIcon, text_type: "Calories" },
+  //   { icon_types: proteinIcon, text_type: "Proteines" },
+  //   { icon_types: carbohydrateIcon, text_type: "Glucides" },
+  //   { icon_types: lipidIcon, text_type: "Lipides" },
+  // ];
+
+  const showTypes = nutriments.map((el, index) => {
     return (
       <CardInfos
         key={index}
         text_type={el.text_type}
-        icon_types={el.icon_types}
+        icon_type={el.icon_type}
+        value={values[index]}
       />
     );
   });
 
-  const [value, setValue] = useState("maroua");
+  useEffect(() => {
+    /**
+     * récupérer les données des deux utilisateurs
+     * Retrieves all data using a mocked API endpoint.
+     *@return {Promise} A promise that resolves with the data response.
+     */
+    async function getMockedData() {
+      try {
+        const userData = await getAllDataMocked();
+
+        setState({
+          ...state,
+          data: userData,
+
+          error: "",
+          isLoading: false,
+        });
+      } catch (error) {
+        setState({ ...state, error: error, isLoading: false });
+      }
+    }
+    getMockedData();
+  }, []);
+  if (isLoading) return <p> loading...</p>;
   return (
     <>
       <h1>SportResultsTraining</h1>;
       <div className="container_profil_user">
         <header>
-          <h1>bonjour {userId}</h1>
+          <h1>bonjour {firstName}</h1>
           <span>Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
         </header>
         <section className="section_infos">

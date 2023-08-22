@@ -1,26 +1,18 @@
 import { useState, useEffect } from "react";
+import { User } from "../../model/User";
 
-function CardInfos(props) {
-  let initailState = null;
-  const [state, setState] = useState(initailState);
-  console.log([state, setState]);
-  const showResults = () => {
-    return setState("hello");
-  };
-
-  useEffect(() => {}, []);
-
+function CardInfos({ icon_type, text_type, value, API }) {
   return (
     <>
       <div className="card">
         <img
           className="icon_types"
-          src={props.icon_types}
-          alt={`image_icon_${props.text_type}`}
+          src={icon_type}
+          alt={`image_icon_${text_type}`}
         />
         <div className="card_text">
-          <div className="measure_type">{state}</div>
-          <div className="text_type">{props.text_type} </div>
+          <div className="measure_type">{value}</div>
+          <div className="text_type">{text_type} </div>
         </div>
       </div>
     </>
