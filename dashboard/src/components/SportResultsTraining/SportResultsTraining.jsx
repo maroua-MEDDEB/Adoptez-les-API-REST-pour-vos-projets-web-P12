@@ -28,14 +28,7 @@ const SportResultsTraining = () => {
     mockedData?.userMainData,
     false
   )._keyData;
-  console.log(nutriments);
-  //les données de CardInfos
-  // const data_types = [
-  //   { icon_types: calorieIcon, text_type: "Calories" },
-  //   { icon_types: proteinIcon, text_type: "Proteines" },
-  //   { icon_types: carbohydrateIcon, text_type: "Glucides" },
-  //   { icon_types: lipidIcon, text_type: "Lipides" },
-  // ];
+  // console.log(nutriments);
 
   const showTypes = nutriments.map((el, index) => {
     return (
