@@ -2,8 +2,11 @@ import { useParams } from "react-router-dom";
 import CardInfos from "../CardInfos/CardInfos";
 
 import { useState, useEffect } from "react";
-import { getDataByUserId, getAllDataMocked } from "../../service/mockedAPI";
+import { getAllDataMocked } from "../../service/mockedAPI";
 import { User } from "../../model/User";
+import ScoreUser from "../../components/ScoreUser/ScoreUser";
+import { Score } from "../../model/Score";
+import "./SportResultsTraining.css";
 
 const initialState = {
   isLoading: true,
@@ -16,10 +19,8 @@ const SportResultsTraining = () => {
   const { userId } = useParams(); // déstrcuturer cet ensemble du poramètre - accéder au parapmètres de l'url courant
   const [state, setState] = useState(initialState);
   const { isLoading, isDataLoaded, data: mockedData, error } = state;
-  // console.log(state.data.userMainData[0].userInfos);
-  // const userData = getDataByUserId(userId);
-  // console.log(userData);
 
+  //userData
   const user = new User(userId, mockedData, false);
   const firstName = user?._firstName || "unknown user";
 
@@ -78,7 +79,9 @@ const SportResultsTraining = () => {
             <div className="item_activity"></div>
             activités
             <div className="items_measure">
-              <div className="item_measure">mesures</div>
+              <div>session</div>
+              <div>coucou</div>
+              <ScoreUser userId={userId} data={mockedData} api={false} />
             </div>
           </div>
           <div className="grid_cards">

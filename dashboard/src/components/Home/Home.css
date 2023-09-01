@@ -36,7 +36,6 @@ a {
 
 /* container profilUser*/
 .container_profil_user {
-  background: green;
   margin: 2rem 2rem 2rem 7.25rem;
 }
 
@@ -47,13 +46,11 @@ header {
 
 /* infos */
 .section_infos {
-  background: yellow;
   padding: 1rem;
   display: flex;
 }
 
 .items_activity_sport {
-  background: blue;
   width: 70%;
 }
 

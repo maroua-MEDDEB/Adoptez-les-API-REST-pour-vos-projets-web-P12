@@ -6,7 +6,7 @@
 export class Score {
   constructor(userId, data) {
     this._userId = userId;
-    this._data = data.userMainData;
+    this._data = data?.userMainData;
   }
 
   /**
@@ -25,7 +25,7 @@ export class Score {
    */
   get score() {
     let score = 0;
-    this._data.forEach((element) => {
+    this._data?.forEach((element) => {
       if (element.userId === parseInt(this._userId)) {
         score = element.todayScore;
       }
