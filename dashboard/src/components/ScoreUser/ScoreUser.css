@@ -1,5 +1,6 @@
 .scoreContainer {
   position: relative;
+  width: 258px;
   display: flex;
   justify-content: center;
   align-items: center;

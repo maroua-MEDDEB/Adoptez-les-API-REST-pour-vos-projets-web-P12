@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import CardInfos from "../CardInfos/CardInfos";
+import CardInfos from "../../components/CardInfos/CardInfos";
 
 import { useState, useEffect } from "react";
 import { getAllDataMocked } from "../../service/mockedAPI";
@@ -7,6 +7,8 @@ import { User } from "../../model/User";
 import ScoreUser from "../../components/ScoreUser/ScoreUser";
 import { Score } from "../../model/Score";
 import "./SportResultsTraining.css";
+import SessionDuration from "../../components/SessionDuration/SessionDuration";
+import ActivityDays from "../../components/AcivityDays/ActivityDays";
 
 const initialState = {
   isLoading: true,
@@ -68,18 +70,22 @@ const SportResultsTraining = () => {
   if (isLoading) return <p> loading...</p>;
   return (
     <>
-      <h1>SportResultsTraining</h1>;
       <div className="container_profil_user">
         <header>
-          <h1>bonjour {firstName}</h1>
+          <p>
+            <h1>Bonjour</h1>
+            <h1 className="nameUser">{firstName}</h1>
+          </p>
+
           <span>Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
         </header>
         <section className="section_infos">
           <div className="items_activity_sport">
-            <div className="item_activity"></div>
-            activités
+            <div className="item_activity">
+              <ActivityDays />
+            </div>
             <div className="items_measure">
-              <div>session</div>
+              <SessionDuration userId={userId} data={mockedData} api={false} />
               <div>coucou</div>
               <ScoreUser userId={userId} data={mockedData} api={false} />
             </div>

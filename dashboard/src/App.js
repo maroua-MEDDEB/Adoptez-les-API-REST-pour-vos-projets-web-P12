@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home/Home";
-import SportResultsTraining from "../src/components/SportResultsTraining/SportResultsTraining";
+import Home from "./Pages/Home/Home";
+import SportResultsTraining from "./Pages/SportResultsTraining/SportResultsTraining";
 import NavBarH from "./components/NavBarH/NavBarH";
 import NavBarV from "./components/NavBarV/NavBarV";
 

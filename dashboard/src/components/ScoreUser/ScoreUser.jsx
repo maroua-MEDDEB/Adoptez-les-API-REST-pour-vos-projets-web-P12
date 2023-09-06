@@ -17,7 +17,7 @@ function ScoreUser({ userId, data, api = false }) {
       fillColor: "transparent",
     },
   ];
-  console.log(pieData);
+  // console.log(pieData);
   return (
     <div className="scoreContainer">
       <h3>Score</h3>

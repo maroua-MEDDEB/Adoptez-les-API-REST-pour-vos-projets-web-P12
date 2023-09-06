@@ -1,0 +1,58 @@
+/* header */
+header p {
+  display: flex;
+}
+.nameUser {
+  color: var(--color--primary);
+  margin-left: 5px;
+}
+/* infos */
+.section_infos {
+  padding: 1rem;
+  display: flex;
+}
+
+.items_activity_sport {
+  width: 70%;
+}
+
+.grid_cards {
+  flex: 1 1 0;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.card img {
+  height: 60px;
+  width: 60px;
+}
+.card_text {
+  display: block;
+}
+
+.item_activity {
+  height: 320px;
+  background: goldenrod;
+}
+
+.items_measure {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  height: 260px;
+}
+
+.cardInfos {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.measure_type {
+  font-weight: bold;
+}
