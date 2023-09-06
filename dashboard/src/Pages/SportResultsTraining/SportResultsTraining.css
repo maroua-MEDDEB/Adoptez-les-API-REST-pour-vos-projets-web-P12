@@ -1,5 +1,5 @@
 /* header */
-header p {
+.header_title {
   display: flex;
 }
 .nameUser {

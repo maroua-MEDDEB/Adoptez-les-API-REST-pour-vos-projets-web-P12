@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import SportResultsTraining from "./Pages/SportResultsTraining/SportResultsTraining";
+import Error from "./Pages/Error/Error";
 import NavBarH from "./components/NavBarH/NavBarH";
 import NavBarV from "./components/NavBarV/NavBarV";
 
@@ -17,6 +18,7 @@ const App = () => {
           path="/sportResults/:userId"
           element={<SportResultsTraining />}
         ></Route>
+        <Route path="*" element={<Error />}></Route>
       </Routes>
     </>
   );

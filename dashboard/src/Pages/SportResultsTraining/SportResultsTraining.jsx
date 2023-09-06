@@ -72,10 +72,10 @@ const SportResultsTraining = () => {
     <>
       <div className="container_profil_user">
         <header>
-          <p>
+          <div className="header_title">
             <h1>Bonjour</h1>
             <h1 className="nameUser">{firstName}</h1>
-          </p>
+          </div>
 
           <span>Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
         </header>

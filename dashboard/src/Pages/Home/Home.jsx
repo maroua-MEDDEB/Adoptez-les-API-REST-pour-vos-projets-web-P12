@@ -1,4 +1,4 @@
-import { Profil, SportResultsTraining } from "../../components";
+import { Profil } from "../../components";
 import "./Home.css";
 import React, { useEffect, useState } from "react";
 import { getAllDataMocked } from "../../service/mockedAPI";
