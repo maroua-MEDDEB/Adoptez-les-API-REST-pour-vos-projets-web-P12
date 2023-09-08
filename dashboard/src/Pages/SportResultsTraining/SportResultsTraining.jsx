@@ -7,7 +7,7 @@ import { User } from "../../model/User";
 import ScoreUser from "../../components/ScoreUser/ScoreUser";
 import { Score } from "../../model/Score";
 import "./SportResultsTraining.css";
-import SessionDuration from "../../components/SessionDuration/SessionDuration";
+import { SessionDuration } from "../../components/SessionDuration/SessionDuration";
 import ActivityDays from "../../components/AcivityDays/ActivityDays";
 
 const initialState = {
@@ -19,12 +19,13 @@ const initialState = {
 
 const SportResultsTraining = () => {
   const { userId } = useParams(); // déstrcuturer cet ensemble du poramètre - accéder au parapmètres de l'url courant
+
   const [state, setState] = useState(initialState);
   const { isLoading, isDataLoaded, data: mockedData, error } = state;
 
   //userData
   const user = new User(userId, mockedData, false);
-  const firstName = user?._firstName || "unknown user";
+  const firstName = user?._firstName || "l'utilisateur est inconnu";
 
   const { nutriments, values } = new User(
     userId,

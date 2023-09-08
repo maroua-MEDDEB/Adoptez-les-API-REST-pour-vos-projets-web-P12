@@ -5,7 +5,7 @@
  */
 export class Session {
   constructor(userId, data) {
-    this.userId = userId;
+    this._userId = userId;
     this.data = data;
   }
   /**
@@ -16,7 +16,8 @@ export class Session {
   get _sessions() {
     let sessions = [];
     const days = ["L", "M", "M", "J", "V", "S", "D"];
-    days.map((user) => {
+    console.log(this.data);
+    this.data?.map((user) => {
       if (user.userId === parseInt(this._userId)) {
         const item = user.sessions;
         item.map((session) => {
