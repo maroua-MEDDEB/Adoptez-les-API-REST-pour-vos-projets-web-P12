@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Activity } from "../../model/Activity";
+import { RadarAc } from "../../model/RadarAc";
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -18,11 +18,15 @@ import { RadarContainer } from "./index.style.js";
  * @return {JSX.Element}
  */
 export function RadarActivities({ userId, data, api = false }) {
-  const performances = new Activity(userId, data)._activities;
+  const performances = new RadarAc(userId, data)._activities;
   return (
     <RadarContainer>
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart outerRadius={window.innerWidth > 1340 ? "70%" : "60%"}>
+      <ResponsiveContainer aspect={1} width="100%" height="100%">
+        <RadarChart
+          outerRadius={window.innerWidth > 1340 ? "70%" : "60%"}
+          width="100%"
+          height="100%"
+        >
           <PolarGrid radialLines={false} />
           <PolarAngleAxis
             dataKey="activity"
