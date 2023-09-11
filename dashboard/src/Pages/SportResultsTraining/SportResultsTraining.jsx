@@ -17,6 +17,7 @@ import { User } from "../../model/User";
 import ScoreUser from "../../components/ScoreUser/ScoreUser";
 import { Score } from "../../model/Score";
 import { SessionDuration } from "../../components/SessionDuration/SessionDuration";
+import { RadarActivities } from "../../components/RadarActivities/RadarActivities";
 
 const initialState = {
   isLoading: true,
@@ -96,8 +97,8 @@ function SportResultsTraining() {
             </Item_activity>
             <ItemsMeasure>
               <SessionDuration userId={userId} data={mockedData} api={false} />
-              <div>RadarActivities</div>
-              {/* <RadarActivities userId={userId} data={mockedData} api={false} /> */}
+              {/* <div>RadarActivities</div> */}
+              <RadarActivities userId={userId} data={mockedData} api={false} />
               <ScoreUser userId={userId} data={mockedData} api={false} />
             </ItemsMeasure>
           </ItemsActivitySport>
