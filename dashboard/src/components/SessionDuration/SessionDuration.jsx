@@ -1,6 +1,5 @@
 // @ts-nocheck
 import PropTypes from "prop-types";
-import React from "react";
 import {
   Line,
   LineChart,
@@ -43,8 +42,6 @@ export function SessionDuration({ userId, data, api = false }) {
           data={sessions}
           outerRadius="75%"
           margin={{ top: 0, right: 12, bottom: 48, left: 12 }}
-          // width={258}
-          // height={300}
         >
           <XAxis
             dataKey="day"
