@@ -3,14 +3,14 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import SportResultsTraining from "./Pages/SportResultsTraining/SportResultsTraining";
 import Error from "./Pages/Error/Error";
-import NavBarH from "./components/NavBarH/NavBarH";
-import NavBarV from "./components/NavBarV/NavBarV";
+import NavBarHorizontal from "./components/NavBarHorizontal/NavBarHorizontal";
+import NavBarVertical from "./components/NavBarVertical/NavBarVertical";
 
 const App = () => {
   return (
     <>
-      <NavBarH />
-      <NavBarV />
+      <NavBarHorizontal />
+      <NavBarVertical />
       {/* définir les différens routages */}
       <Routes>
         <Route path="/" element={<Home />}></Route>

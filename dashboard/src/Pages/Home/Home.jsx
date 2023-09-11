@@ -1,7 +1,7 @@
 import { Profil } from "../../components";
-import "./Home.css";
 import React, { useEffect, useState } from "react";
 import { getAllDataMocked } from "../../service/mockedAPI";
+import { HomeContainer, Titlespan, TitleDiv } from "./index.style.js";
 
 const initialState = {
   isLoading: true,
@@ -39,9 +39,9 @@ function Home() {
   return (
     //page intermédiaire vers la page d'utilisateur
     <>
-      <div className="home">
-        <span>Bienvenue!</span>
-        <div className="containerHome">
+      <HomeContainer>
+        <Titlespan>Bienvenue!</Titlespan>
+        <TitleDiv>
           {data?.userMainData?.map((element, index) => (
             <Profil
               key={index}
@@ -50,8 +50,8 @@ function Home() {
               imageSrc={`/images/${element.userInfos.firstName}.png`}
             />
           ))}
-        </div>
-      </div>
+        </TitleDiv>
+      </HomeContainer>
     </>
   );
 }

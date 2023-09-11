@@ -1,10 +1,11 @@
-const SportIcon = (props) => {
+import PropTypes from "prop-types";
 
-      return  (
-        <div className="icon">
-        <img src={props.icon} alt='icon'/>
+function SportIcon(props) {
+  return (
+    <div className="icon">
+      <img src={props.icon} alt="icon" />
     </div>
-      )
-  }
+  );
+}
 
-export default SportIcon
+export default SportIcon;

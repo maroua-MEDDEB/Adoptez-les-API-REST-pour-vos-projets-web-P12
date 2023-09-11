@@ -1,6 +1,6 @@
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { Score } from "../../model/Score";
-import "./ScoreUser.css";
+import { ScoreContainer, TextScore, ParagraphScore } from "./index.style";
 function ScoreUser({ userId, data, api = false }) {
   //scoreData
   const scoreData = new Score(userId, data, api);
@@ -19,8 +19,8 @@ function ScoreUser({ userId, data, api = false }) {
   ];
   // console.log(pieData);
   return (
-    <div className="scoreContainer">
-      <h3>Score</h3>
+    <ScoreContainer>
+      <TextScore>Score</TextScore>
       {/* <ResponsiveContainer width="700" height="700"> */}
       <PieChart width={160} height={160}>
         <Pie
@@ -41,11 +41,11 @@ function ScoreUser({ userId, data, api = false }) {
         </Pie>
       </PieChart>
       {/* </ResponsiveContainer> */}
-      <p>
+      <ParagraphScore>
         <span>{scoreData.score}</span> <br /> de votre <br />
         objectif
-      </p>
-    </div>
+      </ParagraphScore>
+    </ScoreContainer>
   );
 }
 

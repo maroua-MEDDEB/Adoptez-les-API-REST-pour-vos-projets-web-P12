@@ -1,20 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {
+  // UsercontainerHome,
+  Userimg,
+  UserName,
+  UserProfile,
+  ListUsers,
+} from "./index.style.js";
+import PropTypes from "prop-types";
 
-const Profil = (props) => {
-  // transmettre l'id du de l'utilisateur vers la page UsercontainerHome.
-  let userInfos = `/sportResults/${props.userId}`;
+function Profil({ userId, userInfos, imageSrc }) {
+  // transmettre l'id du de l'utilisateur vers la page SportReultTraining.
+  let userInformations = `/sportResults/${userId}`;
   return (
     <>
-      <Link to={userInfos}>
-        <div className="usercontainerHome">
-          {/* <img src={imageSrc} alt="" /> */}
-          <img src={props.imageSrc} alt="" />
-          <span>{props.userInfos.firstName}</span>
-        </div>
-      </Link>
+      <ListUsers>
+        <li style={{ listStyle: "none", textAlign: "center" }}>
+          <UserProfile href={userInformations}>
+            {/* <UsercontainerHome> */}
+            {/* <img src={imageSrc} alt="" /> */}
+            <Userimg src={imageSrc} alt="" />
+            <UserName>{userInfos.firstName}</UserName>
+            {/* </UsercontainerHome> */}
+          </UserProfile>
+        </li>
+      </ListUsers>
     </>
   );
-};
+}
 
+Profil.prototypes = {
+  userId: PropTypes.number.isRequired,
+  userInfos: PropTypes.object.isRequired,
+  imageSrc: PropTypes.string.isRequired,
+};
 export default Profil;

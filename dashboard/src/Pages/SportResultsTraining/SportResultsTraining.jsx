@@ -1,12 +1,21 @@
 import { useParams } from "react-router-dom";
 import CardInfos from "../../components/CardInfos/CardInfos";
-
+import {
+  ContainerProfilUser,
+  HeaderTitle,
+  NameUser,
+  SectionInfos,
+  Item_activity,
+  ItemsActivitySport,
+  GridCards,
+  CardInformations,
+  ItemsMeasure,
+} from "./index.style";
 import { useState, useEffect } from "react";
 import { getAllDataMocked } from "../../service/mockedAPI";
 import { User } from "../../model/User";
 import ScoreUser from "../../components/ScoreUser/ScoreUser";
 import { Score } from "../../model/Score";
-import "./SportResultsTraining.css";
 import { SessionDuration } from "../../components/SessionDuration/SessionDuration";
 import ActivityDays from "../../components/AcivityDays/ActivityDays";
 
@@ -17,7 +26,7 @@ const initialState = {
   data: null,
 };
 
-const SportResultsTraining = () => {
+function SportResultsTraining() {
   const { userId } = useParams(); // déstrcuturer cet ensemble du poramètre - accéder au parapmètres de l'url courant
 
   const [state, setState] = useState(initialState);
@@ -71,33 +80,33 @@ const SportResultsTraining = () => {
   if (isLoading) return <p> loading...</p>;
   return (
     <>
-      <div className="container_profil_user">
+      <ContainerProfilUser>
         <header>
-          <div className="header_title">
+          <HeaderTitle>
             <h1>Bonjour</h1>
-            <h1 className="nameUser">{firstName}</h1>
-          </div>
-
+            <NameUser>{firstName}</NameUser>
+          </HeaderTitle>
           <span>Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
         </header>
-        <section className="section_infos">
-          <div className="items_activity_sport">
-            <div className="item_activity">
+
+        <SectionInfos>
+          <ItemsActivitySport>
+            <Item_activity>
               <ActivityDays />
-            </div>
-            <div className="items_measure">
+            </Item_activity>
+            <ItemsMeasure>
               <SessionDuration userId={userId} data={mockedData} api={false} />
               <div>coucou</div>
               <ScoreUser userId={userId} data={mockedData} api={false} />
-            </div>
-          </div>
-          <div className="grid_cards">
-            <div className="cardInfos">{showTypes}</div>
-          </div>
-        </section>
-      </div>
+            </ItemsMeasure>
+          </ItemsActivitySport>
+          <GridCards>
+            <CardInformations>{showTypes}</CardInformations>
+          </GridCards>
+        </SectionInfos>
+      </ContainerProfilUser>
     </>
   );
-};
+}
 
 export default SportResultsTraining;

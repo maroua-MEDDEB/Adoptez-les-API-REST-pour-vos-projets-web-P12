@@ -1,20 +1,19 @@
-import { useState, useEffect } from "react";
-import { User } from "../../model/User";
+import { Card, CardImg, CardText, MeasureType } from "./index.style";
 
-function CardInfos({ icon_type, text_type, value, API }) {
+function CardInfos({ icon_type, text_type, value }) {
   return (
     <>
-      <div className="card">
-        <img
+      <Card>
+        <CardImg
           className="icon_types"
           src={icon_type}
           alt={`image_icon_${text_type}`}
         />
-        <div className="card_text">
-          <div className="measure_type">{value}</div>
+        <CardText>
+          <MeasureType>{value}</MeasureType>
           <div className="text_type">{text_type} </div>
-        </div>
-      </div>
+        </CardText>
+      </Card>
     </>
   );
 }
