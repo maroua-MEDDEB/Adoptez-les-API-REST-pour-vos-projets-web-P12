@@ -4,6 +4,7 @@ export const ActivityDaysContainer = styled.div`
   position: relative;
   height: 100%;
   background: #fbfbfb;
+  margin-bottom: 1rem;
 `;
 
 export const ActivityDaysTitle = styled.h2`
@@ -25,7 +26,7 @@ export const ActivityDaysLegend = styled.div`
   position: absolute;
   top: 1.5rem;
   right: 2rem;
-  color: blue;
+  color: "#74798C";
 
   @media (max-width: 1340px) {
     top: 1rem;

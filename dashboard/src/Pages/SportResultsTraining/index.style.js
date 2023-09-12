@@ -22,6 +22,7 @@ export const SectionInfos = styled.section`
 export const Item_activity = styled.div`
   height: 320px;
   background: goldenrod;
+  margin-bottom: 2rem;
 `;
 
 export const ItemsActivitySport = styled.div`

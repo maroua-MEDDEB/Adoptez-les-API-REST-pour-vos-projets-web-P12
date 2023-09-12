@@ -16,13 +16,13 @@ export function CustomTooltip({ active, payload }) {
       <TooltipContainer>
         <TooltipLine
           // @ts-ignore
-          background="green"
+          background="##282D30"
         >
           {`${payload[0].value} kg`}
         </TooltipLine>
         <TooltipLine
           // @ts-ignore
-          background="yellow"
+          background="#E60000"
         >
           {`${payload[1].value} kCal`}
         </TooltipLine>

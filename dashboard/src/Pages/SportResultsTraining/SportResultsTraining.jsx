@@ -14,7 +14,7 @@ import {
 import { useState, useEffect } from "react";
 import { getAllDataMocked } from "../../service/mockedAPI";
 import { User } from "../../model/User";
-// import { ActivityDays } from "../../components/AcivityDays/ActivityDays";
+import { ActivityDays } from "../../components/AcivityDays/ActivityDays";
 import ScoreUser from "../../components/ScoreUser/ScoreUser";
 import { Score } from "../../model/Score";
 import { SessionDuration } from "../../components/SessionDuration/SessionDuration";
@@ -93,8 +93,7 @@ function SportResultsTraining() {
         <SectionInfos>
           <ItemsActivitySport>
             <Item_activity>
-              <div>coucou</div>
-              {/* <ActivityDays userId={userId} data={mockedData} api={false} /> */}
+              <ActivityDays userId={userId} data={mockedData} api={false} />
             </Item_activity>
             <ItemsMeasure>
               <SessionDuration userId={userId} data={mockedData} api={false} />
