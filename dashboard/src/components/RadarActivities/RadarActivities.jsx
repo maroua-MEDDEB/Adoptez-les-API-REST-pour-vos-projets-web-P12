@@ -19,10 +19,13 @@ import { RadarContainer } from "./index.style.js";
  */
 export function RadarActivities({ userId, data, api = false }) {
   const performances = new RadarAc(userId, data)._activities;
+  console.log("performances : ", performances);
+
   return (
     <RadarContainer>
       <ResponsiveContainer aspect={1} width="100%" height="100%">
         <RadarChart
+          data={performances}
           outerRadius={window.innerWidth > 1340 ? "70%" : "60%"}
           width="100%"
           height="100%"
