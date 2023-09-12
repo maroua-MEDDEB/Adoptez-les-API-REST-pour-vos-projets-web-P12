@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 /* ContainerProfilUser */
 export const ContainerProfilUser = styled.div`
-  padding: 5rem 10rem;
+  padding-left: 13rem;
+}
 `;
 /* header */
 export const HeaderTitle = styled.div`
@@ -33,7 +34,6 @@ export const ItemsMeasure = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   height: 260px;
 `;
 
@@ -46,4 +46,5 @@ export const CardInformations = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 `;
