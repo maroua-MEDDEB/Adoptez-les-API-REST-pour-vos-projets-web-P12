@@ -43,7 +43,7 @@ export function RadarActivities({ userId, data, api = false }) {
           />
           <Radar
             dataKey="value"
-            fill="blue"
+            fill="#ff0101"
             fillOpacity={0.7}
             stroke="transparent"
           />
