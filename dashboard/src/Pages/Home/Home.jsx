@@ -19,6 +19,7 @@ const initialState = {
 
 function Home() {
   const [state, setState] = useState(initialState);
+
   const { data, isLoading } = state;
 
   const [checked, setChecked] = useState(false);
@@ -50,6 +51,8 @@ function Home() {
     getMockedData();
   }, []);
 
+  if (isLoading) return <p> loading...</p>;
+
   return (
     //page intermédiaire vers la page d'utilisateur
     <>
@@ -75,6 +78,7 @@ function Home() {
               userInfos={element.userInfos}
               imageSrc={`/images/${element.userInfos.firstName}.png`}
               api={checked}
+              data={element}
             />
           ))}
         </TitleDiv>

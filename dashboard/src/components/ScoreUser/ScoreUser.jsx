@@ -1,15 +1,21 @@
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { Score } from "../../model/Score";
 import { ScoreContainer, TextScore, ParagraphScore } from "./index.style";
-function ScoreUser({ userId, data, api = false }) {
+import PropTypes from "prop-types";
+
+function ScoreUser({ userId, data, api = false, userApiScore }) {
   //scoreData
   const scoreData = new Score(userId, data, api);
-  // console.log(scoreData);
+  console.log("scoreData : ", scoreData);
+
+  const scoreDataApi = new Score(userId, data, userApiScore);
+  console.log("scoreDataApi : ", scoreDataApi.scoreApi);
+
   const pieData = [
     {
       name: "completed",
-      value: scoreData.score,
-      fillColor: "var(--color--primary)",
+      value: api ? scoreDataApi.scoreApi : scoreData.score,
+      fillColor: "red",
     },
     {
       name: "not-completed",
@@ -48,5 +54,12 @@ function ScoreUser({ userId, data, api = false }) {
     </ScoreContainer>
   );
 }
+
+ScoreUser.propTypes = {
+  userId: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
+  api: PropTypes.string,
+  userApiScore: PropTypes.number,
+};
 
 export default ScoreUser;

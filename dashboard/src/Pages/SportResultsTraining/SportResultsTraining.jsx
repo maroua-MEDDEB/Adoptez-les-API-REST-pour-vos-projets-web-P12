@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import CardInfos from "../../components/CardInfos/CardInfos";
 import {
   ContainerProfilUser,
@@ -16,9 +16,9 @@ import { getAllDataMocked } from "../../service/mockedAPI";
 import { User } from "../../model/User";
 import { ActivityDays } from "../../components/AcivityDays/ActivityDays";
 import ScoreUser from "../../components/ScoreUser/ScoreUser";
-import { Score } from "../../model/Score";
 import { SessionDuration } from "../../components/SessionDuration/SessionDuration";
 import { RadarActivities } from "../../components/RadarActivities/RadarActivities";
+import { useSportSeeApi } from "../../service/hook/index.js";
 
 const initialState = {
   isLoading: true,
@@ -28,14 +28,38 @@ const initialState = {
 };
 
 function SportResultsTraining() {
-  const { userId } = useParams(); // déstrcuturer cet ensemble du poramètre - accéder au parapmètres de l'url courant
-
   const [state, setState] = useState(initialState);
+
+  const { userId, api } = useParams(); // déstrcuturer cet ensemble du poramètre - accéder au parapmètres de l'url courant
+  // const api = false;
+  console.log("UseParams ::", userId, api);
+
+  const {
+    userApi,
+    sessionsApi,
+    performancesApi,
+    averageApi,
+    isApiLoading,
+    errorApi,
+  } = useSportSeeApi(userId);
+  // console.log("userApi :", userApi);
+  // console.log('sessionsApi :', sessionsApi);
+  // console.log('pefApi :', performancesApi);
+  // console.log('averageApi :', averageApi);
+  // console.log('isApiLoading  ', isApiLoading, errorApi);
+
+  const navigate = useNavigate();
+  if (!["12", "18"].includes(userId)) {
+    navigate("/Error");
+  }
+
   const { isLoading, isDataLoaded, data: mockedData, error } = state;
 
   //userData
-  const user = new User(userId, mockedData, false);
-  const firstName = user?._firstName || "l'utilisateur est inconnu";
+  // const user = new User(userId, mockedData, false);
+  // const firstName = user?._firstName || "l'utilisateur est inconnu";
+
+  const firstName = new User(userId, mockedData)._firstName || "unknown user";
 
   const { nutriments, values } = new User(
     userId,
@@ -44,6 +68,8 @@ function SportResultsTraining() {
   )._keyData;
   // console.log(nutriments);
 
+  const icons_unit_infos = ["kCal", "g", "g", "g"];
+
   const showTypes = nutriments.map((el, index) => {
     return (
       <CardInfos
@@ -51,6 +77,7 @@ function SportResultsTraining() {
         text_type={el.text_type}
         icon_type={el.icon_type}
         value={values[index]}
+        unity={icons_unit_infos[index]}
       />
     );
   });
@@ -68,7 +95,7 @@ function SportResultsTraining() {
         setState({
           ...state,
           data: userData,
-
+          isDataLoaded: true,
           error: "",
           isLoading: false,
         });
@@ -77,38 +104,71 @@ function SportResultsTraining() {
       }
     }
     getMockedData();
+    setState({ ...state, isLoading: false });
+    console.log("state: ", state);
   }, []);
-  if (isLoading) return <p> loading...</p>;
-  return (
-    <>
-      <ContainerProfilUser>
-        <header>
-          <HeaderTitle>
-            <h1>Bonjour</h1>
-            <NameUser>{firstName}</NameUser>
-          </HeaderTitle>
-          <span>Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
-        </header>
 
-        <SectionInfos>
-          <ItemsActivitySport>
-            <Item_activity>
-              <ActivityDays userId={userId} data={mockedData} api={false} />
-            </Item_activity>
-            <ItemsMeasure>
-              <SessionDuration userId={userId} data={mockedData} api={false} />
-              {/* <div>RadarActivities</div> */}
-              <RadarActivities userId={userId} data={mockedData} api={false} />
-              <ScoreUser userId={userId} data={mockedData} api={false} />
-            </ItemsMeasure>
-          </ItemsActivitySport>
-          <GridCards>
-            <CardInformations>{showTypes}</CardInformations>
-          </GridCards>
-        </SectionInfos>
-      </ContainerProfilUser>
-    </>
-  );
+  if (isLoading || isApiLoading) return <p> loading...</p>;
+
+  if (errorApi || error) {
+    return <p> erreur est survenue </p>;
+  }
+
+  if (isDataLoaded) {
+    return (
+      <>
+        <ContainerProfilUser>
+          <header>
+            <HeaderTitle>
+              <h1>Bonjour</h1>
+              <NameUser>
+                {" "}
+                {!isLoading && api ? userApi?.userInfos?.firstName : firstName}
+              </NameUser>
+            </HeaderTitle>
+            <span>Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
+          </header>
+
+          <SectionInfos>
+            <ItemsActivitySport>
+              <Item_activity>
+                <ActivityDays
+                  userId={userId}
+                  data={mockedData}
+                  activiytDaysApi={sessionsApi?.sessions}
+                  api={api}
+                />
+              </Item_activity>
+              <ItemsMeasure>
+                <SessionDuration
+                  userId={userId}
+                  data={mockedData}
+                  averageApi={averageApi}
+                  api={api}
+                />
+                {/* <div>RadarActivities</div> */}
+                <RadarActivities
+                  userId={userId}
+                  data={mockedData}
+                  performancesApi={performancesApi}
+                  api={api}
+                />
+                <ScoreUser
+                  userId={userId}
+                  data={mockedData}
+                  userApiScore={userApi.score}
+                  api={api}
+                />
+              </ItemsMeasure>
+            </ItemsActivitySport>
+            <GridCards>
+              <CardInformations>{showTypes}</CardInformations>
+            </GridCards>
+          </SectionInfos>
+        </ContainerProfilUser>
+      </>
+    );
+  }
 }
 
 export default SportResultsTraining;

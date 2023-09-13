@@ -1,6 +1,7 @@
 import { Card, CardImg, CardText, MeasureType } from "./index.style";
 
-function CardInfos({ icon_type, text_type, value }) {
+function CardInfos({ icon_type, text_type, value, unity }) {
+  console.log(unity);
   return (
     <>
       <Card>
@@ -10,8 +11,10 @@ function CardInfos({ icon_type, text_type, value }) {
           alt={`image_icon_${text_type}`}
         />
         <CardText>
-          <MeasureType>{value}</MeasureType>
-          <div className="text_type">{text_type} </div>
+          <MeasureType>
+            {value} {unity}
+          </MeasureType>
+          <div className="text_type">{text_type}</div>
         </CardText>
       </Card>
     </>

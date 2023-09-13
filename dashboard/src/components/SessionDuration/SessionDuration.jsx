@@ -26,9 +26,14 @@ import {
  * @param  {Object}  averageApi   User data from Api
  * @return {JSX.Element}
  */
-export function SessionDuration({ userId, data, api = false }) {
+export function SessionDuration({ userId, data, api = false, averageApi }) {
   const sessions = new Session(userId, data?.userAverageSession)._sessions;
-  console.log(sessions);
+  console.log("sessions: ", sessions);
+
+  const sessionsApi = new Session(userId, data?.userAverageSession, averageApi)
+    ._sessionsApi;
+  console.log("sessionsApi: ", sessionsApi);
+
   return (
     <AverageSessionsContainer>
       <AverageSessionsTitle>

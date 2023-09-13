@@ -13,14 +13,16 @@ import PropTypes from "prop-types";
  */
 function Profil({ userId, userInfos, imageSrc, api }) {
   // transmettre l'id du de l'utilisateur vers la page SportReultTraining.
-  let userInformations = `/sportResults/${userId}`;
+  // let userInformations = `/sportResults/${userId}`;
 
   return (
     <>
       <ListUsers>
         <li style={{ listStyle: "none", textAlign: "center" }}>
           <UserProfile
-            href={api ? `/sportResults/{userId}/${api}` : userInformations}
+            href={
+              api ? `/sportResults/${userId}/${api}` : `/sportResults/${userId}`
+            }
           >
             {/* <UsercontainerHome> */}
             {/* <img src={imageSrc} alt="" /> */}

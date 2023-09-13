@@ -17,9 +17,18 @@ import { RadarContainer } from "./index.style.js";
  * @param   {Object}  data   all User data
  * @return {JSX.Element}
  */
-export function RadarActivities({ userId, data, api = false }) {
+export function RadarActivities({
+  userId,
+  data,
+  api = false,
+  performancesApi,
+}) {
   const performances = new RadarAc(userId, data)._activities;
-  console.log("performances : ", performances);
+  console.log("performances ==> ", performances);
+
+  const performances_Api = new RadarAc(userId, data, performancesApi)
+    ._activitiesApi;
+  console.log("performances_Api ==> ", performances_Api);
 
   return (
     <RadarContainer>

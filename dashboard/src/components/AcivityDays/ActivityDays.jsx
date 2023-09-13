@@ -18,9 +18,17 @@ import {
 } from "recharts";
 import { CustomTooltip } from "../CustomTooltip/CustomTooltip.jsx";
 
-export function ActivityDays({ userId, data, api = false }) {
+export function ActivityDays({ userId, data, api = false, activiytDaysApi }) {
   const activityDays = new Activity(userId, data?.userActivities)._activities;
   console.log("activityDays : ", activityDays);
+
+  const activitiesDaysApi = new Activity(
+    userId,
+    data?.userActivities,
+    activiytDaysApi
+  )._activitiesApi;
+  console.log("activitiesDaysApi : ", activitiesDaysApi);
+
   return (
     <ActivityDaysContainer>
       <ActivityDaysTitle>Activité quotidienne</ActivityDaysTitle>
@@ -38,7 +46,7 @@ export function ActivityDays({ userId, data, api = false }) {
 
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
-          data={activityDays}
+          data={api ? activitiesDaysApi : activityDays}
           margin={{ top: 80, right: 48, bottom: 32, left: 48 }}
           barGap={8}
           barCategoryGap="35%"
@@ -91,7 +99,7 @@ export function ActivityDays({ userId, data, api = false }) {
             wrapperStyle={{ outlineStyle: "none" }}
             content={<CustomTooltip />}
             cursor={{
-              fill: "#000000",
+              fill: "transparent",
             }}
           />
         </BarChart>
@@ -99,9 +107,10 @@ export function ActivityDays({ userId, data, api = false }) {
     </ActivityDaysContainer>
   );
 }
+
 ActivityDays.propTypes = {
   userId: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
-  api: PropTypes.bool,
+  api: PropTypes.string,
+  activiytDaysApi: PropTypes.array,
 };
-// export default ActivityDays;
