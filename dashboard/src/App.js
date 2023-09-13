@@ -18,6 +18,10 @@ const App = () => {
           path="/sportResults/:userId"
           element={<SportResultsTraining />}
         ></Route>
+        <Route
+          path="/sportResults/:userId/:api"
+          element={<SportResultsTraining />}
+        ></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </>
