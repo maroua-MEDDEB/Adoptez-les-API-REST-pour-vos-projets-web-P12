@@ -1,7 +1,15 @@
 import { Profil } from "../../components";
 import React, { useEffect, useState } from "react";
 import { getAllDataMocked } from "../../service/mockedAPI";
-import { HomeContainer, Titlespan, TitleDiv } from "./index.style.js";
+import Switch from "react-switch";
+import {
+  HomeContainer,
+  HeaderHomeContainer,
+  Titlespan,
+  TitleDiv,
+  ApiText,
+  LabelContainer,
+} from "./index.style.js";
 
 const initialState = {
   isLoading: true,
@@ -12,6 +20,12 @@ const initialState = {
 function Home() {
   const [state, setState] = useState(initialState);
   const { data, isLoading } = state;
+
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (prev) => {
+    setChecked(prev, !prev);
+  };
 
   useEffect(() => {
     /**
@@ -40,7 +54,19 @@ function Home() {
     //page intermédiaire vers la page d'utilisateur
     <>
       <HomeContainer>
-        <Titlespan>Bienvenue!</Titlespan>
+        <HeaderHomeContainer>
+          <Titlespan>Bienvenue!</Titlespan>
+          <LabelContainer>
+            <label>
+              <ApiText>Api</ApiText>
+              <Switch
+                checked={checked}
+                onChange={handleChange}
+                onColor="#ff0101"
+              />
+            </label>
+          </LabelContainer>
+        </HeaderHomeContainer>
         <TitleDiv>
           {data?.userMainData?.map((element, index) => (
             <Profil
@@ -48,6 +74,7 @@ function Home() {
               userId={element?.userId}
               userInfos={element.userInfos}
               imageSrc={`/images/${element.userInfos.firstName}.png`}
+              api={checked}
             />
           ))}
         </TitleDiv>

@@ -1,25 +1,33 @@
 import React from "react";
-import {
-  // UsercontainerHome,
-  Userimg,
-  UserName,
-  UserProfile,
-  ListUsers,
-} from "./index.style.js";
+import { Userimg, UserName, UserProfile, ListUsers } from "./index.style.js";
 import PropTypes from "prop-types";
 
-function Profil({ userId, userInfos, imageSrc }) {
+/**
+ * Component for showing  Profile
+ *
+ * @component Profile
+ * @param   {string}  userId  User Id
+ * @param   {string}  imageSource
+ * @param   {boolean}  api   is Api available?
+ * @return {JSX.Element}
+ */
+function Profil({ userId, userInfos, imageSrc, api }) {
   // transmettre l'id du de l'utilisateur vers la page SportReultTraining.
   let userInformations = `/sportResults/${userId}`;
+
   return (
     <>
       <ListUsers>
         <li style={{ listStyle: "none", textAlign: "center" }}>
-          <UserProfile href={userInformations}>
+          <UserProfile
+            href={api ? `/sportResults/{userId}/${api}` : userInformations}
+          >
             {/* <UsercontainerHome> */}
             {/* <img src={imageSrc} alt="" /> */}
             <Userimg src={imageSrc} alt="" />
-            <UserName>{userInfos.firstName}</UserName>
+            <UserName>
+              {api ? userInfos.firstName.split("Mocked") : userInfos.firstName}
+            </UserName>
             {/* </UsercontainerHome> */}
           </UserProfile>
         </li>
