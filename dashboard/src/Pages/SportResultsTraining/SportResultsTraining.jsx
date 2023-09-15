@@ -19,6 +19,7 @@ import ScoreUser from "../../components/ScoreUser/ScoreUser";
 import { SessionDuration } from "../../components/SessionDuration/SessionDuration";
 import { RadarActivities } from "../../components/RadarActivities/RadarActivities";
 import { useSportSeeApi } from "../../service/hook/index.js";
+import Error from "../../Pages/Error/Error";
 
 const initialState = {
   isLoading: true,
@@ -32,7 +33,11 @@ function SportResultsTraining() {
 
   const { userId, api } = useParams(); // déstrcuturer cet ensemble du poramètre - accéder au parapmètres de l'url courant
   // const api = false;
-  console.log("UseParams ::", userId, api);
+
+  const navigate = useNavigate();
+  if (!["12", "18"].includes(userId)) {
+    navigate("/Error");
+  }
 
   const {
     userApi,
@@ -42,22 +47,8 @@ function SportResultsTraining() {
     isApiLoading,
     errorApi,
   } = useSportSeeApi(userId);
-  // console.log("userApi :", userApi);
-  // console.log('sessionsApi :', sessionsApi);
-  // console.log('pefApi :', performancesApi);
-  // console.log('averageApi :', averageApi);
-  // console.log('isApiLoading  ', isApiLoading, errorApi);
-
-  const navigate = useNavigate();
-  if (!["12", "18"].includes(userId)) {
-    navigate("/Error");
-  }
 
   const { isLoading, isDataLoaded, data: mockedData, error } = state;
-
-  //userData
-  // const user = new User(userId, mockedData, false);
-  // const firstName = user?._firstName || "l'utilisateur est inconnu";
 
   const firstName = new User(userId, mockedData)._firstName || "unknown user";
 
@@ -103,15 +94,17 @@ function SportResultsTraining() {
         setState({ ...state, error: error, isLoading: false });
       }
     }
-    getMockedData();
+    if (["12", "18"].includes(userId)) {
+      getMockedData();
+    }
     setState({ ...state, isLoading: false });
     console.log("state: ", state);
-  }, []);
+  }, [navigate, userId]);
 
   if (isLoading || isApiLoading) return <p> loading...</p>;
 
   if (errorApi || error) {
-    return <p> erreur est survenue </p>;
+    return <Error />;
   }
 
   if (isDataLoaded) {

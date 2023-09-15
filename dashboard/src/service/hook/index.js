@@ -45,7 +45,7 @@ export function useSportSeeApi(userId) {
         .catch((error) => {
           setIsLoading(false);
           setErrorApi(error.message);
-          throw new Error(error);
+          // throw new Error(error);
         });
     };
 
@@ -58,6 +58,7 @@ export function useSportSeeApi(userId) {
   const performancesApi = perf?.data?.data;
   const userApi = user?.data?.data;
   const averageApi = average?.data?.data;
+
   return {
     userApi,
     sessionsApi,
